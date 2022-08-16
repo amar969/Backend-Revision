@@ -2,6 +2,8 @@
 
 var fs = require("fs")
 
+
+// blocking Sync way 
 var data = fs.readFileSync('index.txt')
 console.log(data.toString())
 console.log("Program Ended")
@@ -11,8 +13,19 @@ fs.readFile("input.txt", "utf8", function(err, data){
     console.log(data.toString())
 })
 
-// Process 
+// write the file 
+// let output = (`This is the content from input file ${data}. \n Created on ${Date.now()}`)
+// fs.writeFileSync("output.txt", output)
+// console.log("File written !!!")
 
+
+// Non-blocking Async way 
+let output2 = fs.readFile("test.txt", "utf-8", (err, data) => {
+  console.log(data)
+})
+console.log("Hellow world")
+
+// Process 
 const process = require("process")
 console.log(process.argv)
 
